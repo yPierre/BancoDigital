@@ -40,16 +40,20 @@ public class Banco {
     public void imprimirExtratoBanco(String cpf, String senha){
         for (Conta i: contas) {
             if(i.compare(cpf, senha)){
-                i.imprimirExtrato();
+                i.imprimir();
                 return;
             }
         }
+    }
+    public void imprimirContas(){
+        for (Conta i: contas)
+            i.imprimir();
     }
     public void depositarBanco(String cpf, String senha, double valor){
         for (Conta i: contas) {
             if(i.compare(cpf, senha)){
                 i.depositar(valor);
-                i.imprimirExtrato();
+                i.imprimir();
                 return;
             }
         }
@@ -58,7 +62,7 @@ public class Banco {
         for (Conta i: contas) {
             if(i.compare(cpf, senha)){
                 i.sacar(valor);
-                i.imprimirExtrato();
+                i.imprimir();
                 return;
             }
         }
@@ -68,7 +72,7 @@ public class Banco {
         for (Conta i: contas) {
             if(i.compare(cpf, senha)){
                 i.sacar(valor);
-                i.imprimirExtrato();
+                i.imprimir();
                 break;
             }
         }
@@ -78,5 +82,14 @@ public class Banco {
                 break;
             }
         }
+    }
+
+    public boolean efetuarLoginCliente(String cpf, String senha){
+        for (Conta i: contas) {
+            if(i.compare(cpf, senha) && (i instanceof ContaCorrente || i instanceof ContaPoupanca)){
+                return true;
+            }
+        }
+        return false;
     }
 }

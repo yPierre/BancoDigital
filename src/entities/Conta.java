@@ -49,7 +49,7 @@ public abstract class Conta {
         return saldo;
     }
 
-    public abstract void imprimirExtrato();
+    public abstract void imprimir();
 
     public boolean compare(String cpf, String senha){
         return this.cliente.getCpf().equals(cpf) && this.cliente.getSenha().equals(senha);
